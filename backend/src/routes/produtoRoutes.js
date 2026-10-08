@@ -1,10 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const produtoController = require('../controllers/produtoController');
 
-router.get('/', (req, res) => {
-  res.json({
-    mensagem: 'Rota de produtos funcionando!'
-  });
-});
+// Chama a função do controller em vez de ter a função dentro da rota
+router.get('/', produtoController.listarProdutos);
 
 module.exports = router;
