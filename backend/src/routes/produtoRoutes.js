@@ -1,12 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const produtoController = require('../controllers/produtoController');
+const { autenticarToken, autorizarPerfis } = require('../middlewares/authMiddleware');
 
-// Chama a função do controller em vez de ter a função dentro da rota
-router.get('/', produtoController.listarProdutos);
-router.get('/:id', produtoController.buscarProdutoPorId);
-router.post('/', produtoController.criarProduto);
-router.put('/:id', produtoController.atualizarProduto);
-router.delete('/:id', produtoController.excluirProduto);
+// 1. Exige Token JWT válido em todas as rotas abaixo
+router.use(autenticarToken);
+
+// 2. Administrador, Operador e Visualizador podem CONSULTAR
+router.get('/', autorizarPerfis('Administrador', 'Operador', 'Visualizador'), produtoController.listarProdutos);
+router.get('/:id', autorizarPerfis('Administrador', 'Operador', 'Visualizador'), produtoController.buscarProdutoPorId);
+
+// 3. Apenas Administrador e Operador podem CRIAR, ATUALIZAR ou EXCLUIR
+router.post('/', autorizarPerfis('Administrador', 'Operador'), produtoController.criarProduto);
+router.put('/:id', autorizarPerfis('Administrador', 'Operador'), produtoController.atualizarProduto);
+router.delete('/:id', autorizarPerfis('Administrador', 'Operador'), produtoController.excluirProduto);
 
 module.exports = router;

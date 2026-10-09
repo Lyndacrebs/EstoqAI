@@ -2,14 +2,18 @@ const express = require('express'); //Importa o módulo do Express para ter aces
 const cors = require('cors');
 require('dotenv').config();
 
-const produtoRoutes = require('./routes/produtoRoutes'); // <--- Comente esta linha
+// Importação das Rotas
+const produtoRoutes = require('./routes/produtoRoutes');
+const usuarioRoutes = require('./routes/usuarioRoutes');
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/produtos', produtoRoutes); // <--- Comente esta linha
+// Registro das Rotas
+app.use('/api/produtos', produtoRoutes); 
+app.use('/api/usuarios', usuarioRoutes);
 
 app.get('/', (req, res) => {
   res.json({
