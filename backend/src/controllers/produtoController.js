@@ -29,14 +29,16 @@ async function buscarProdutoPorId(req, res) {
 // Criar novo produto
 async function criarProduto(req, res) {
   try {
-    const { nome, quantidade, preco } = req.body;
+    // 1. Desestrutura a unidade do req.body
+    const { nome, quantidade, unidade, preco } = req.body;
 
-    // Validação simples dos campos obrigatórios
-    if (!nome || quantidade === undefined || preco === undefined) {
-      return res.status(400).json({ mensagem: 'Nome, quantidade e preço são obrigatórios' });
+    // 2. Validação dos campos
+    if (!nome || quantidade === undefined || !unidade) {
+      return res.status(400).json({ mensagem: 'Nome, quantidade e unidade são obrigatórios' });
     }
 
-    const novoProduto = await produtoRepository.criarProduto({ nome, quantidade, preco });
+    // 3. Envia todos os campos para o repository
+    const novoProduto = await produtoRepository.criarProduto({ nome, quantidade, unidade, preco });
     res.status(201).json(novoProduto);
   } catch (error) {
     res.status(500).json({ erro: 'Erro ao criar produto', detalhes: error.message });
