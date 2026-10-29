@@ -29,19 +29,23 @@ async function buscarProdutoPorId(req, res) {
 // Criar novo produto
 async function criarProduto(req, res) {
   try {
-    // 1. Desestrutura a unidade do req.body
-    const { nome, quantidade, unidade, preco } = req.body;
+    const { nome, descricao, codigo_barras, unidade, preco } = req.body;
 
-    // 2. Validação dos campos
-    if (!nome || quantidade === undefined || !unidade) {
-      return res.status(400).json({ mensagem: 'Nome, quantidade e unidade são obrigatórios' });
+    if (!nome || !unidade) {
+      return res.status(400).json({ mensagem: 'Nome e unidade são obrigatórios.' });
     }
 
-    // 3. Envia todos os campos para o repository
-    const novoProduto = await produtoRepository.criarProduto({ nome, quantidade, unidade, preco });
-    res.status(201).json(novoProduto);
+    const novoProduto = await produtoRepository.criar({
+      nome,
+      descricao,
+      codigo_barras,
+      unidade,
+      preco: preco || 0
+    });
+
+    return res.status(201).json(novoProduto);
   } catch (error) {
-    res.status(500).json({ erro: 'Erro ao criar produto', detalhes: error.message });
+    return res.status(500).json({ mensagem: 'Erro ao criar produto', detalhes: error.message });
   }
 }
 

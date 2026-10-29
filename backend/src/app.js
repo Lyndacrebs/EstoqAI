@@ -5,6 +5,7 @@ require('dotenv').config();
 // Importação das Rotas
 const produtoRoutes = require('./routes/produtoRoutes');
 const usuarioRoutes = require('./routes/usuarioRoutes');
+const loteRoutes = require('./routes/loteRoutes');
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(express.json());
 // Registro das Rotas
 app.use('/api/produtos', produtoRoutes); 
 app.use('/api/usuarios', usuarioRoutes);
+app.use('/api/lotes', loteRoutes);
 
 app.get('/', (req, res) => {
   res.json({
