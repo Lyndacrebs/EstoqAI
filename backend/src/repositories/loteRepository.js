@@ -59,6 +59,23 @@ class LoteRepository {
       });
     });
   }
+
+  async buscarPorCodigoInterno(codigo_interno) {
+  return new Promise((resolve, reject) => {
+    const sql = `
+      SELECT l.*, p.nome AS produto_nome, p.unidade 
+      FROM lotes l
+      JOIN produtos p ON l.id_produtos = p.id_produtos
+      WHERE l.codigo_interno = ?
+    `;
+    db.get(sql, [codigo_interno], (err, row) => {
+      if (err) return reject(err);
+      resolve(row);
+    });
+  });
 }
+}
+
+
 
 module.exports = new LoteRepository();
