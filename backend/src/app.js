@@ -6,6 +6,7 @@ require('dotenv').config();
 const produtoRoutes = require('./routes/produtoRoutes');
 const usuarioRoutes = require('./routes/usuarioRoutes');
 const loteRoutes = require('./routes/loteRoutes');
+const notaFiscalRoutes = require('./routes/notaFiscalRoutes');
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use('/api/produtos', produtoRoutes); 
 app.use('/api/usuarios', usuarioRoutes);
 app.use('/api/lotes', loteRoutes);
+app.use('/api/notas-fiscais', notaFiscalRoutes);
 
 app.get('/', (req, res) => {
   res.json({
