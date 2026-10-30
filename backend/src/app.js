@@ -8,6 +8,7 @@ const usuarioRoutes = require('./routes/usuarioRoutes');
 const loteRoutes = require('./routes/loteRoutes');
 const notaFiscalRoutes = require('./routes/notaFiscalRoutes');
 const movimentacaoRoutes = require('./routes/movimentacaoRoutes');
+const relatorioRoutes = require('./routes/relatorioRoutes');
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use('/api/usuarios', usuarioRoutes);
 app.use('/api/lotes', loteRoutes);
 app.use('/api/notas-fiscais', notaFiscalRoutes);
 app.use('/api/movimentacoes', movimentacaoRoutes);
+app.use('/api/relatorios', relatorioRoutes);
 
 app.get('/', (req, res) => {
   res.json({
