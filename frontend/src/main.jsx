@@ -1,10 +1,18 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import React from "react";
+import { createRoot } from "react-dom/client";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+// ordem importa: tokens (cores) -> tailwind -> base -> componentes -> telas
+import "./styles/tokens.css";
+import "./styles/tailwind.css";
+import "./styles/base.css";
+import "./styles/components.css";
+import "./styles/layout.css";
+import "./styles/login.css";
+
+import App from "./App.jsx";
+
+createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
-)
+);

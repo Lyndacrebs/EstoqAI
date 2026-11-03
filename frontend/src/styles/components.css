@@ -1,0 +1,173 @@
+/* Componentes visuais reutilizados em todas as telas (prefixo stk-) */
+
+.stk-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.stk-input {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 14px;
+  width: 100%;
+  background: white;
+  color: var(--text-900);
+  transition: border-color 0.15s ease;
+}
+.stk-input:focus {
+  outline: none;
+  border-color: var(--teal-500);
+}
+/* campo bloqueado: aparece "apagado" para o usuário saber que não pode editar */
+.stk-input:disabled {
+  background: var(--bg);
+  color: var(--text-300);
+  border-color: var(--border);
+  cursor: not-allowed;
+  opacity: 0.75;
+}
+
+.stk-btn-primary {
+  background: var(--teal-500);
+  color: white;
+  font-weight: 600;
+  transition: background 0.15s ease;
+}
+.stk-btn-primary:hover:not(:disabled) {
+  background: var(--teal-600);
+}
+.stk-btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.stk-btn-outline {
+  border: 1px solid var(--border);
+  font-weight: 600;
+  background: white;
+  transition: background 0.15s ease;
+}
+.stk-btn-outline:hover:not(:disabled) {
+  background: var(--bg);
+}
+.stk-btn-outline:disabled {
+  opacity: 0.5;
+}
+
+.stk-btn-danger {
+  background: var(--red-500);
+  color: white;
+  font-weight: 600;
+}
+
+.stk-focus:focus-visible {
+  outline: 2px solid var(--teal-500);
+  outline-offset: 2px;
+}
+
+.stk-nav-item {
+  transition: background 0.15s ease, color 0.15s ease;
+  color: var(--text-300);
+}
+.stk-nav-item.active {
+  background: var(--teal-500);
+  color: white;
+}
+.stk-nav-item:not(.active):hover {
+  background: var(--navy-700);
+  color: white;
+}
+
+.stk-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--overlay);
+}
+
+.stk-table {
+  width: 100%;
+  font-size: 14px;
+}
+.stk-table th {
+  text-align: left;
+  font-weight: 500;
+  padding: 12px 20px;
+  color: var(--text-500);
+}
+.stk-table th.right,
+.stk-table td.right {
+  text-align: right;
+}
+.stk-table thead tr {
+  background: var(--bg);
+}
+.stk-table td {
+  padding: 12px 20px;
+}
+.stk-table tbody tr {
+  border-top: 1px solid var(--border);
+}
+
+.stk-badge {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.stk-link-btn {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--teal-600);
+}
+
+/* animação da leitura da NF */
+.stk-scanline {
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--teal-500), transparent);
+  animation: stk-scan 1.6s ease-in-out infinite;
+  box-shadow: 0 0 12px 1px var(--teal-500);
+}
+@keyframes stk-scan {
+  0% { top: 8%; opacity: 0; }
+  15% { opacity: 1; }
+  50% { top: 88%; opacity: 1; }
+  85% { opacity: 1; }
+  100% { top: 92%; opacity: 0; }
+}
+
+.stk-fadein {
+  animation: stk-fadein 0.25s ease-out;
+}
+@keyframes stk-fadein {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* barras decorativas (tela de login) */
+.stk-barcode {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 2px;
+}
+.stk-barcode span {
+  display: block;
+  background: var(--navy-900);
+}
+
+.stk-btn-success {
+  background: var(--green-600);
+  color: white;
+  font-weight: 600;
+}

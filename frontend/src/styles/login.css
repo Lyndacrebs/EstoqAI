@@ -1,0 +1,14 @@
+/* Tela de login */
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--navy-900);
+}
+
+.login-hero {
+  background: linear-gradient(160deg, var(--navy-900), var(--navy-700));
+}

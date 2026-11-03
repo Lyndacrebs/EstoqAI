@@ -1,0 +1,31 @@
+/* Fontes */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+/*
+  DESIGN TOKENS — cores do sistema.
+  Para mudar a identidade visual, altere apenas este arquivo.
+  Paleta "controle de armazém": navy operacional + teal de ação + âmbar de alerta.
+*/
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --navy-900: #12203d;
+  --navy-800: #182a4c;
+  --navy-700: #23385f;
+  --teal-500: #0ea5a0;
+  --teal-600: #0a8b87;
+  --teal-100: #e1f5f3;
+  --amber-500: #ee9e1f;
+  --amber-100: #fdf0da;
+  --amber-text: #8a5a0c;
+  --red-500: #e15252;
+  --red-100: #fbe6e6;
+  --red-text: #8a2a2a;
+  --green-600: #3f8f5f;
+  --green-100: #e4f3e9;
+  --text-900: #14213d;
+  --text-500: #62708a;
+  --text-300: #a2aec2;
+  --border: #e3e7ee;
+  --overlay: rgba(18, 32, 61, 0.55);
+}
