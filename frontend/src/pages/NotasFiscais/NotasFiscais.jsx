@@ -25,7 +25,7 @@ export default function NotasFiscais() {
       </FilterBar>
       <ErrorBox mensagem={error} onRetry={reload} />
 
-      <div className="stk-card overflow-hidden">
+      <div className="stk-card stk-table-wrap">
         <table className="stk-table">
           <thead>
             <tr><th>Nome da NF</th><th>Data</th><th>Produtos</th><th>Usuário responsável</th><th className="right">Ações</th></tr>
@@ -35,14 +35,14 @@ export default function NotasFiscais() {
               <tr><td colSpan={5}><Loading /></td></tr>
             ) : (notas || []).map((nf) => (
               <tr key={nf.id}>
-                <td>
+                <td data-label="Nome da NF">
                   <p className="font-medium">{nf.nome}</p>
                   <p className="text-xs font-mono" style={{ color: "var(--text-300)" }}>{nf.id}</p>
                 </td>
-                <td>{fmtDate(nf.data)}</td>
-                <td style={{ color: "var(--text-500)" }}>{nf.quantidadeProdutos} produto(s)</td>
-                <td>{nf.usuarioResponsavel}</td>
-                <td className="right"><button onClick={() => setAbrir(nf.id)} className="stk-link-btn stk-focus">Detalhes</button></td>
+                <td data-label="Data">{fmtDate(nf.data)}</td>
+                <td data-label="Produtos" style={{ color: "var(--text-500)" }}>{nf.quantidadeProdutos} produto(s)</td>
+                <td data-label="Usuário responsável">{nf.usuarioResponsavel}</td>
+                <td data-label="" className="right"><button onClick={() => setAbrir(nf.id)} className="stk-link-btn stk-focus">Detalhes</button></td>
               </tr>
             ))}
             {notas && notas.length === 0 && <EmptyRow colSpan={5} texto="Nenhuma nota fiscal encontrada." />}

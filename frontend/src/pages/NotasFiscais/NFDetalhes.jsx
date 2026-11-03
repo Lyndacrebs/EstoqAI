@@ -51,11 +51,11 @@ export default function NFDetalhes({ notaId, onClose }) {
   return (
     <Modal onClose={onClose} width={768}
       title={<div><span>{nf.nome}</span><p className="text-xs font-mono font-normal" style={{ color: "var(--text-500)" }}>{nf.id} · {fmtDate(nf.data)} · cadastrada por {nf.usuarioResponsavel}</p></div>}>
-      <div className="grid grid-cols-5 gap-6">
-        <div className="col-span-2"><NFImagem nf={{ ...nf, imagemUrl }} /></div>
-        <div className="col-span-3">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+        <div className="md:col-span-2"><NFImagem nf={{ ...nf, imagemUrl }} /></div>
+        <div className="md:col-span-3">
           <p className="text-xs font-medium mb-2" style={{ color: "var(--text-500)" }}>Itens lançados a partir desta NF</p>
-          <div className="rounded-lg border overflow-hidden mb-5" style={{ borderColor: "var(--border)" }}>
+          <div className="rounded-lg border overflow-x-auto mb-5" style={{ borderColor: "var(--border)" }}>
             <table className="w-full text-sm">
               <thead>
                 <tr style={{ background: "var(--bg)" }}>

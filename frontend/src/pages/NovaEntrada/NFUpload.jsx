@@ -30,15 +30,15 @@ export default function NFUpload({ onFile, lendo, previewUrl, erro }) {
       <input ref={cameraRef} type="file" accept="image/*" capture="environment" className="hidden" onChange={escolher} />
       <input ref={arquivoRef} type="file" accept="image/*" className="hidden" onChange={escolher} />
 
-      <div className="grid grid-cols-2 gap-5 max-w-3xl">
-        <button onClick={usarCamera} className="stk-card stk-focus p-8 flex flex-col items-center gap-3 hover:shadow-sm" disabled={lendo}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 max-w-3xl">
+        <button onClick={usarCamera} className="stk-card stk-focus p-6 md:p-8 flex flex-col items-center gap-3 hover:shadow-sm" disabled={lendo}>
           <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ background: "var(--teal-100)" }}>
             <Camera size={24} style={{ color: "var(--teal-600)" }} />
           </div>
           <p className="font-display font-semibold">Usar câmera do celular</p>
           <p className="text-xs text-center" style={{ color: "var(--text-500)" }}>Aponte para a NF impressa e capture a imagem.</p>
         </button>
-        <button onClick={() => arquivoRef.current.click()} className="stk-card stk-focus p-8 flex flex-col items-center gap-3 hover:shadow-sm" disabled={lendo}>
+        <button onClick={() => arquivoRef.current.click()} className="stk-card stk-focus p-6 md:p-8 flex flex-col items-center gap-3 hover:shadow-sm" disabled={lendo}>
           <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ background: "var(--teal-100)" }}>
             <ImagePlus size={24} style={{ color: "var(--teal-600)" }} />
           </div>
@@ -60,7 +60,7 @@ export default function NFUpload({ onFile, lendo, previewUrl, erro }) {
       )}
 
       {lendo && (
-        <div className="stk-card mt-6 max-w-3xl p-6">
+        <div className="stk-card mt-6 max-w-3xl p-4 md:p-6">
           <div className="relative rounded-lg overflow-hidden flex items-center justify-center" style={{ height: 260, background: "var(--navy-900)" }}>
             {previewUrl
               ? <img src={previewUrl} alt="Nota fiscal enviada" style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }} />

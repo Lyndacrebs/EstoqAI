@@ -110,8 +110,8 @@ export default function SaidaEstoque() {
   return (
     <div>
       <PageHeader title="Saída de estoque" subtitle="Leia a etiqueta ou busque pelo nome cada item retirado da prateleira" />
-      <div className="grid grid-cols-3 gap-5">
-        <div className="col-span-2 stk-card p-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="md:col-span-2 stk-card p-4 md:p-6">
           <ErrorBox mensagem={erro} />
           <BarcodeScanner onRead={aoLerCodigo} disabled={enviando} />
 
@@ -152,8 +152,8 @@ export default function SaidaEstoque() {
                 const e = erroQtd(item);
                 return (
                   <div key={item.id} className="p-3 rounded-lg border" style={{ borderColor: e ? "var(--red-500)" : "var(--border)" }}>
-                    <div className="flex items-center justify-between">
-                      <div>
+                    <div className="flex items-center justify-between flex-wrap gap-3">
+                      <div className="min-w-0">
                         <p className="text-sm font-medium">{item.nome}</p>
                         <p className="font-mono text-xs" style={{ color: "var(--text-300)" }}>{item.codigoBarras} · disponível: {item.quantidade} {item.unidade}</p>
                       </div>
@@ -172,7 +172,7 @@ export default function SaidaEstoque() {
           )}
         </div>
 
-        <div className="stk-card p-6 h-fit">
+        <div className="stk-card p-4 md:p-6 h-fit">
           <p className="font-display font-semibold text-sm mb-3">Detalhes da saída</p>
           <label className="text-xs font-medium" style={{ color: "var(--text-500)" }}>Descrição (opcional)</label>
           <textarea className="stk-input stk-focus mt-1" rows={3} placeholder="Ex: saída para setor de vendas" value={descricao} onChange={(e) => setDescricao(e.target.value)} />

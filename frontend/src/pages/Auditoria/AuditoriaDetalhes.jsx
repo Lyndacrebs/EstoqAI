@@ -18,7 +18,7 @@ export default function AuditoriaDetalhes({ registro, onClose }) {
       </div>
       <p className="text-xs font-medium mb-1" style={{ color: "var(--text-500)" }}>Detalhes</p>
       <p className="text-sm mb-4">{registro.detalhes}</p>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div className="p-3 rounded-lg" style={{ background: "var(--red-100)" }}>
           <p className="text-xs font-medium mb-1" style={{ color: "var(--red-text)" }}>Situação anterior</p>
           <Lines text={registro.antes} color="var(--red-text)" />

@@ -27,7 +27,7 @@ export default function Dashboard() {
     <div>
       <PageHeader title="Dashboard" subtitle="Visão geral do estoque em tempo real" />
 
-      <div className="grid grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <div className="stk-card p-5">
           <p className="text-xs font-medium mb-1" style={{ color: "var(--text-500)" }}>Produtos ativos</p>
           <p className="font-display text-3xl font-semibold">{produtosAtivos}</p>
@@ -42,7 +42,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <Card {...props("/nova-entrada")} className={`stk-btn-primary rounded-xl p-5 text-left flex items-center justify-between ${foco}`} style={estilo}>
           <div>
             <p className="font-display font-semibold">Nova entrada (ler NF)</p>
@@ -66,10 +66,10 @@ export default function Dashboard() {
         </Card>
       </div>
 
-      <div className="grid grid-cols-5 gap-4">
-        <div className="stk-card p-5 col-span-3">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+        <div className="stk-card p-5 md:col-span-3">
           <p className="font-display font-semibold mb-4">Movimentação da semana</p>
-          <div className="flex items-end gap-4" style={{ height: 140 }}>
+          <div className="flex items-end gap-2 md:gap-4" style={{ height: 140 }}>
             {movimentacaoSemana.map((d) => (
               <div key={d.dia} className="flex-1 flex flex-col items-center gap-1.5">
                 <div className="w-full flex items-end gap-1" style={{ height: 110 }}>
@@ -86,7 +86,7 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div className="stk-card p-5 col-span-2">
+        <div className="stk-card p-5 md:col-span-2">
           <p className="font-display font-semibold mb-4">Atividade recente</p>
           <div className="flex flex-col gap-3">
             {atividadeRecente.map((a, i) => (
@@ -107,7 +107,7 @@ export default function Dashboard() {
           <p className="font-display font-semibold mb-3 flex items-center gap-2" style={{ color: "var(--amber-text)" }}><AlertTriangle size={16} /> Alertas de estoque baixo</p>
           <div className="flex flex-col gap-2">
             {estoqueBaixo.map((p) => (
-              <div key={p.id} className="flex items-center justify-between text-sm">
+              <div key={p.id} className="flex flex-col md:flex-row md:items-center md:justify-between gap-0.5 text-sm">
                 <span>{p.nome}</span>
                 <span className="font-mono" style={{ color: "var(--amber-text)" }}>atual: {p.quantidade} {p.unidade} · mínimo aceitável: {p.limite} {p.unidade}</span>
               </div>

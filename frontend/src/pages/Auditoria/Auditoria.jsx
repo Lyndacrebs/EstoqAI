@@ -31,7 +31,7 @@ export default function Auditoria() {
       </FilterBar>
       <ErrorBox mensagem={error} onRetry={reload} />
 
-      <div className="stk-card overflow-hidden">
+      <div className="stk-card stk-table-wrap">
         <table className="stk-table">
           <thead>
             <tr><th>Usuário</th><th>Ação</th><th>Data / hora</th><th>Setor</th><th className="right">Detalhes</th></tr>
@@ -41,11 +41,11 @@ export default function Auditoria() {
               <tr><td colSpan={5}><Loading /></td></tr>
             ) : (logs || []).map((l) => (
               <tr key={l.id}>
-                <td>{l.usuario}</td>
-                <td>{l.acao}</td>
-                <td className="font-mono text-xs" style={{ color: "var(--text-500)" }}>{l.dataHora}</td>
-                <td><span className="stk-badge" style={{ background: "var(--teal-100)", color: "var(--teal-600)" }}>{l.setor}</span></td>
-                <td className="right"><button onClick={() => setAbrir(l)} className="stk-link-btn stk-focus">Ver detalhes</button></td>
+                <td data-label="Usuário">{l.usuario}</td>
+                <td data-label="Ação">{l.acao}</td>
+                <td data-label="Data / hora" className="font-mono text-xs" style={{ color: "var(--text-500)" }}>{l.dataHora}</td>
+                <td data-label="Setor"><span className="stk-badge" style={{ background: "var(--teal-100)", color: "var(--teal-600)" }}>{l.setor}</span></td>
+                <td data-label="" className="right"><button onClick={() => setAbrir(l)} className="stk-link-btn stk-focus">Ver detalhes</button></td>
               </tr>
             ))}
             {logs && logs.length === 0 && <EmptyRow colSpan={5} texto="Nenhum registro encontrado." />}

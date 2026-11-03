@@ -8,7 +8,7 @@ export function FilterBar({ children }) {
 
 export function FilterField({ label, width, children }) {
   return (
-    <div style={{ width }}>
+    <div className="stk-filter-field" style={{ "--campo-largura": typeof width === "number" ? `${width}px` : width }}>
       <label className="text-xs font-medium block mb-1" style={{ color: "var(--text-500)" }}>{label}</label>
       {children}
     </div>
@@ -52,7 +52,7 @@ export function DateRangeFields({ from, to, setFrom, setTo }) {
 export function StatusTabsField({ tab, setTab }) {
   return (
     <FilterField label="Status">
-      <div className="flex gap-1 p-1 rounded-lg" style={{ background: "var(--border)" }}>
+      <div className="stk-tabs flex gap-1 p-1 rounded-lg" style={{ background: "var(--border)" }}>
         {[["ativos", "Ativos"], ["inativos", "Inativos"], ["todos", "Todos"]].map(([k, l]) => (
           <button key={k} onClick={() => setTab(k)} className="stk-focus px-3.5 py-1.5 rounded-md text-sm font-medium" style={{ background: tab === k ? "white" : "transparent", color: tab === k ? "var(--text-900)" : "var(--text-500)" }}>
             {l}

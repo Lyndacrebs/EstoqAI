@@ -10,5 +10,5 @@ export default function Barcode({ code, height = 50, width = 2, displayValue = t
       JsBarcode(ref.current, String(code), { format: "CODE128", height, width, displayValue, margin: 0, fontSize: 13, lineColor: "#12203D" });
     } catch { /* código inválido: não desenha */ }
   }, [code, height, width, displayValue]);
-  return <svg ref={ref} />;
+  return <svg ref={ref} className="stk-barcode-svg" />;
 }

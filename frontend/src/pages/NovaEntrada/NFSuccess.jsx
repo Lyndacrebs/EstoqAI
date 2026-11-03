@@ -14,7 +14,7 @@ export default function NFSuccess({ nome, soExistentes, onDone }) {
   return (
     <div>
       <PageHeader title="Nova entrada (NF)" />
-      <div className="stk-card p-8 max-w-lg flex flex-col items-center text-center">
+      <div className="stk-card p-5 md:p-8 max-w-lg flex flex-col items-center text-center">
         <div className="w-14 h-14 rounded-full flex items-center justify-center mb-4" style={{ background: "var(--green-100)" }}>
           <Check size={26} style={{ color: "var(--green-600)" }} />
         </div>

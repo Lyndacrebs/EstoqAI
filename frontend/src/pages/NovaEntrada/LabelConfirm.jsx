@@ -10,7 +10,7 @@ export default function LabelConfirm({ produto, temProximo, onNext, onFinish, fi
   return (
     <div>
       <PageHeader title="Produto cadastrado" subtitle="Etiqueta gerada automaticamente com ID único e código de barras" />
-      <div className="stk-card p-6 max-w-md">
+      <div className="stk-card p-4 md:p-6 max-w-md">
         <ErrorBox mensagem={erro} />
         <div className="border-2 border-dashed rounded-xl p-5 text-center" style={{ borderColor: "var(--border)" }}>
           <p className="font-display font-semibold text-sm mb-1">{produto.nome}</p>
@@ -29,7 +29,7 @@ export default function LabelConfirm({ produto, temProximo, onNext, onFinish, fi
         </div>
         <p className="text-xs mt-2" style={{ color: "var(--text-300)" }}>Não precisa imprimir agora — a etiqueta fica disponível a qualquer momento na página do produto.</p>
 
-        <div className="flex justify-end mt-5">
+        <div className="flex justify-end mt-5 [&>button]:w-full sm:[&>button]:w-auto [&>button]:justify-center">
           {temProximo ? (
             <button onClick={onNext} className="stk-btn-primary stk-focus px-5 py-2.5 rounded-lg text-sm flex items-center gap-2">Próximo produto <ArrowRight size={15} /></button>
           ) : (

@@ -33,9 +33,9 @@ export default function UsuarioForm({ usuario, onCancel, onSaved }) {
   };
 
   return (
-    <div className="stk-card p-5 mb-5 max-w-2xl">
+    <div className="stk-card p-4 md:p-5 mb-5 max-w-2xl">
       <p className="font-display font-semibold text-sm mb-3">{editando ? "Editar usuário" : "Novo usuário"}</p>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div>
           <label className="text-xs font-medium" style={rotulo}>Nome completo</label>
           <input className="stk-input stk-focus mt-1" value={form.nome} onChange={(e) => set("nome", e.target.value)} />
@@ -54,7 +54,7 @@ export default function UsuarioForm({ usuario, onCancel, onSaved }) {
             {Object.values(PERFIS).map((p) => <option key={p}>{p}</option>)}
           </select>
         </div>
-        <div className="col-span-2">
+        <div className="sm:col-span-2">
           <label className="text-xs font-medium" style={rotulo}>{editando ? "Nova senha (deixe em branco para manter a atual)" : "Senha"}</label>
           <div className="mt-1"><PasswordInput value={form.senha} onChange={(e) => set("senha", e.target.value)} /></div>
         </div>

@@ -1,0 +1,202 @@
+/*
+  Ajustes para telas menores (celular e tablet).
+  No computador nada muda: tudo aqui só vale dentro dos @media abaixo.
+
+  Pontos de quebra usados no sistema:
+  - até 1023px : o menu lateral vira um menu que abre e fecha (botão no topo)
+  - até 767px  : celular. Tabelas viram cartões, grades viram uma coluna só
+*/
+
+/* Elementos que só existem no celular/tablet ficam escondidos no computador */
+.app-topbar,
+.app-backdrop,
+.app-close-btn {
+  display: none;
+}
+
+/* Permite que o conteúdo encolha dentro do layout (evita estourar a largura da tela) */
+.app-main {
+  min-width: 0;
+}
+
+/* Tabelas largas: no tablet, rolam para o lado dentro do cartão em vez de cortar */
+.stk-table-wrap {
+  overflow-x: auto;
+}
+
+/* Campos dos filtros: a largura vem de --campo-largura (definida em Filters.jsx) */
+.stk-filter-field {
+  width: var(--campo-largura, auto);
+}
+
+/* O código de barras nunca passa da largura do cartão */
+.stk-barcode-svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Janelas (modais): nunca maiores que a tela, mesmo com a barra do navegador do celular */
+.stk-modal {
+  max-height: 90vh;
+  max-height: 90dvh;
+}
+
+/* ---------- Menu lateral recolhível (tablet e celular) ---------- */
+@media (max-width: 1023px) {
+  .app-shell {
+    flex-direction: column;
+  }
+
+  .app-topbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    height: 56px;
+    padding: 0 16px;
+    color: white;
+    background: var(--navy-900);
+  }
+  .app-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-left: -8px;
+    border-radius: 8px;
+    color: white;
+  }
+
+  .app-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 50;
+    width: 272px;
+    max-width: 85vw;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform 0.2s ease, visibility 0s linear 0.2s;
+  }
+  .app-sidebar.aberto {
+    transform: none;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+  .app-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    background: var(--overlay);
+  }
+  .app-close-btn {
+    display: flex;
+    align-items: center;
+    color: var(--text-300);
+  }
+
+  /* a rolagem passa a ser da página inteira, não de uma caixa interna */
+  .app-main {
+    max-height: none;
+    overflow-y: visible;
+    padding: 24px;
+    min-width: 0;
+  }
+}
+
+/* ---------- Celular ---------- */
+@media (max-width: 767px) {
+  .app-main {
+    padding: 16px;
+  }
+
+  /* 16px evita o zoom automático do iPhone ao tocar num campo */
+  .stk-input {
+    font-size: 16px;
+  }
+
+  /* botões com altura confortável para o dedo */
+  .stk-btn-primary,
+  .stk-btn-outline,
+  .stk-btn-danger,
+  .stk-btn-success {
+    min-height: 44px;
+  }
+
+  .stk-overlay {
+    padding: 12px;
+  }
+
+  /* filtros: cada campo ocupa a linha toda */
+  .stk-filter-field {
+    width: 100%;
+  }
+  .stk-tabs button {
+    flex: 1;
+  }
+
+  /* TABELAS viram uma lista de cartões: cada linha mostra "nome da coluna: valor" */
+  .stk-table,
+  .stk-table tbody,
+  .stk-table tr,
+  .stk-table td {
+    display: block;
+    width: 100%;
+  }
+  .stk-table thead {
+    display: none;
+  }
+  .stk-table tbody tr {
+    padding: 12px 16px;
+  }
+  .stk-table tbody tr:first-child {
+    border-top: 0;
+  }
+  .stk-table td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 6px 0;
+    text-align: right;
+    overflow-wrap: anywhere;
+  }
+  .stk-table td::before {
+    content: attr(data-label);
+    flex-shrink: 0;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: left;
+    color: var(--text-500);
+  }
+  .stk-table td:not([data-label])::before,
+  .stk-table td[data-label=""]::before {
+    display: none;
+  }
+  /* coluna de ações: botões à direita, separados do resto */
+  .stk-table td[data-label=""] {
+    justify-content: flex-end;
+    margin-top: 6px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--border);
+  }
+  /* "carregando" e "nenhum registro" ocupam a largura toda, centralizados */
+  .stk-table td[colspan] {
+    display: block;
+    text-align: center;
+  }
+  .stk-table td[colspan]::before {
+    display: none;
+  }
+  /* botões e ícones de ação ficam fáceis de tocar */
+  .stk-table td[data-label=""] button {
+    min-height: 36px;
+    min-width: 36px;
+  }
+}

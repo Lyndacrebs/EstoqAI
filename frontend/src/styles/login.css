@@ -12,3 +12,16 @@
 .login-hero {
   background: linear-gradient(160deg, var(--navy-900), var(--navy-700));
 }
+
+/* altura mínima do cartão só no computador; no celular ele cresce conforme o conteúdo */
+@media (min-width: 768px) {
+  .login-card {
+    min-height: 480px;
+  }
+}
+
+@media (max-width: 767px) {
+  .login-page {
+    padding: 16px;
+  }
+}

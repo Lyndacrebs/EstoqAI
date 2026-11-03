@@ -34,7 +34,7 @@ export default function AjusteQuantidade({ produto, onClose, onSaved }) {
         <button onClick={salvar} disabled={!quantidadeOk || !motivoOk || salvando} className="stk-btn-primary stk-focus rounded-lg px-4 py-2 text-sm">{salvando ? "Salvando…" : "Confirmar alteração"}</button>
       </>}>
       <p className="text-sm mb-4" style={{ color: "var(--text-500)" }}>{produto.nome}</p>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="text-xs font-medium" style={{ color: "var(--text-500)" }}>Quantidade atual</label>
           <input disabled className="stk-input mt-1 font-mono" value={`${produto.quantidade} ${produto.unidade}`} readOnly />

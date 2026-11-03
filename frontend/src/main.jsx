@@ -8,6 +8,7 @@ import "./styles/base.css";
 import "./styles/components.css";
 import "./styles/layout.css";
 import "./styles/login.css";
+import "./styles/responsive.css"; // por último: ajusta tudo para telas menores
 
 import App from "./App.jsx";
 

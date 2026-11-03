@@ -76,7 +76,7 @@ export default function SaidaDetalhes({ saidaId, ehAdmin, onClose, onChanged }) 
               const e = erroItem(it);
               return (
                 <div key={it.produtoId} className="text-sm p-2.5 rounded-lg" style={{ background: "var(--bg)", border: e ? "1px solid var(--red-500)" : "1px solid transparent" }}>
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between flex-wrap gap-2">
                     <span>{it.nome}</span>
                     <div className="flex items-center gap-1.5">
                       <input type="number" min={1} className="stk-input stk-focus font-mono" style={{ width: 72 }} value={Number.isNaN(it.quantidade) ? "" : it.quantidade}

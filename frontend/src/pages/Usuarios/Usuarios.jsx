@@ -48,7 +48,7 @@ export default function Usuarios() {
       </FilterBar>
       <ErrorBox mensagem={error || erroAcao} onRetry={error ? reload : undefined} />
 
-      <div className="stk-card overflow-hidden">
+      <div className="stk-card stk-table-wrap">
         <table className="stk-table">
           <thead>
             <tr><th>Nome</th><th>E-mail</th><th>Perfil</th><th>Status</th><th className="right">Ações</th></tr>
@@ -58,13 +58,13 @@ export default function Usuarios() {
               <tr><td colSpan={5}><Loading /></td></tr>
             ) : (usuarios || []).map((u) => (
               <tr key={u.id}>
-                <td>{u.nome}</td>
-                <td style={{ color: "var(--text-500)" }}>{u.email}</td>
-                <td><span className="stk-badge" style={{ background: "var(--teal-100)", color: "var(--teal-600)" }}>{u.perfil}</span></td>
-                <td>
+                <td data-label="Nome">{u.nome}</td>
+                <td data-label="E-mail" style={{ color: "var(--text-500)" }}>{u.email}</td>
+                <td data-label="Perfil"><span className="stk-badge" style={{ background: "var(--teal-100)", color: "var(--teal-600)" }}>{u.perfil}</span></td>
+                <td data-label="Status">
                   <span className="stk-badge" style={{ background: u.ativo ? "var(--green-100)" : "var(--red-100)", color: u.ativo ? "var(--green-600)" : "var(--red-500)" }}>{u.ativo ? "Ativo" : "Inativo"}</span>
                 </td>
-                <td className="right">
+                <td data-label="" className="right">
                   <div className="flex items-center justify-end gap-3">
                     {u.ativo && <button onClick={() => { setEditando(u); setFormAberto(true); }} className="stk-focus" style={{ color: "var(--teal-600)" }} title="Editar usuário"><Edit2 size={15} /></button>}
                     {u.id === logado.id ? (
@@ -92,7 +92,7 @@ export default function Usuarios() {
       )}
 
       <p className="font-display font-semibold text-sm mt-6 mb-3">O que cada perfil pode fazer</p>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {DESCRICAO_PERFIS.map((d) => (
           <div key={d.perfil} className="stk-card p-4">
             <p className="font-semibold text-sm mb-1.5">{d.perfil}</p>

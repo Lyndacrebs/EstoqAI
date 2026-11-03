@@ -57,7 +57,7 @@ export default function Produtos() {
       {aviso && <div className="p-3 rounded-lg mb-4 text-sm" style={{ background: "var(--green-100)", color: "var(--green-600)" }}>{aviso}</div>}
       <ErrorBox mensagem={error || erroAcao} onRetry={error ? reload : undefined} />
 
-      <div className="stk-card overflow-hidden">
+      <div className="stk-card stk-table-wrap">
         <table className="stk-table">
           <thead>
             <tr>
@@ -70,20 +70,20 @@ export default function Produtos() {
               <tr><td colSpan={5}><Loading /></td></tr>
             ) : (produtos || []).map((p) => (
               <tr key={p.id}>
-                <td>
+                <td data-label="Nome">
                   <div className="flex items-center gap-2">
                     {p.nome}
                     {p.ativo && p.quantidade <= p.limiteEstoqueBaixo && <span title="Estoque baixo"><AlertTriangle size={13} style={{ color: "var(--amber-500)" }} /></span>}
                   </div>
                 </td>
-                <td className="font-mono">{p.quantidade}</td>
-                <td className="font-mono">{p.unidade}</td>
-                <td>
+                <td data-label="Quantidade" className="font-mono">{p.quantidade}</td>
+                <td data-label="Unidade de medida" className="font-mono">{p.unidade}</td>
+                <td data-label="Status">
                   <span className="stk-badge" style={{ background: p.ativo ? "var(--green-100)" : "var(--red-100)", color: p.ativo ? "var(--green-600)" : "var(--red-500)" }}>
                     {p.ativo ? "Ativo" : "Inativo"}
                   </span>
                 </td>
-                <td className="right">
+                <td data-label="" className="right">
                   {p.ativo ? (
                     <button onClick={() => setEditando(p.id)} className="stk-focus" style={{ color: "var(--teal-600)" }} title={somenteLeitura ? "Ver produto" : "Editar produto"}>
                       {somenteLeitura ? <Eye size={15} /> : <Edit2 size={15} />}

@@ -33,23 +33,23 @@ export default function Login() {
 
   return (
     <div className="login-page">
-      <div className="w-full max-w-4xl grid md:grid-cols-2 stk-card overflow-hidden" style={{ minHeight: 480 }}>
-        <div className="login-hero p-10 flex flex-col text-white">
+      <div className="login-card w-full max-w-4xl grid md:grid-cols-2 stk-card overflow-hidden">
+        <div className="login-hero p-6 md:p-10 flex flex-col text-white">
           <div>
-            <div className="flex items-center gap-2 mb-8">
+            <div className="flex items-center gap-2 mb-5 md:mb-8">
               <div className="app-logo" style={{ width: 36, height: 36 }}><Package size={18} /></div>
               <span className="font-display font-semibold text-lg tracking-tight">EstoqAI</span>
             </div>
-            <h1 className="font-display text-3xl font-semibold leading-tight mb-3">
+            <h1 className="font-display text-xl md:text-3xl font-semibold leading-tight md:mb-3">
               Gestão de estoque pensada para pequenas e médias empresas
             </h1>
           </div>
-          <div className="opacity-80 mt-auto pt-10">
+          <div className="hidden md:block opacity-80 mt-auto pt-10">
             <DecorBarcode code="ESTOQAI2026" height={28} />
           </div>
         </div>
 
-        <div className="p-10 flex flex-col justify-center bg-white">
+        <div className="p-6 md:p-10 flex flex-col justify-center bg-white">
           {!esqueci ? (
             <>
               <h2 className="font-display text-xl font-semibold mb-6">Entrar</h2>

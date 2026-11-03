@@ -79,9 +79,9 @@ export default function ProdutoDetalhe({ produtoId, onVoltar, somenteLeitura, eh
       )}
       <ErrorBox mensagem={erro} />
 
-      <div className="grid grid-cols-3 gap-5">
-        <div className="stk-card p-6 col-span-2">
-          <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="stk-card p-4 md:p-6 md:col-span-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div><label className={rotulo} style={corRotulo}>Nome</label><input disabled={camposBloqueados} className="stk-input stk-focus mt-1" value={f.nome} onChange={(e) => set("nome", e.target.value)} /></div>
             <div><label className={rotulo} style={corRotulo}>Categoria</label><input disabled={camposBloqueados} className="stk-input stk-focus mt-1" value={f.categoria} onChange={(e) => set("categoria", e.target.value)} /></div>
             <div>
@@ -97,8 +97,8 @@ export default function ProdutoDetalhe({ produtoId, onVoltar, somenteLeitura, eh
               {!ehAdmin && !camposBloqueados && <p className="text-xs mt-1" style={{ color: "var(--text-300)" }}>Só o Administrador altera a quantidade manualmente</p>}
             </div>
             <div><label className={rotulo} style={corRotulo}>Unidade de medida</label><input disabled={camposBloqueados} className="stk-input stk-focus mt-1" value={f.unidade} onChange={(e) => set("unidade", e.target.value)} /></div>
-            <div className="col-span-2"><label className={rotulo} style={corRotulo}>Descrição</label><textarea disabled={camposBloqueados} rows={2} className="stk-input stk-focus mt-1" value={f.descricao} onChange={(e) => set("descricao", e.target.value)} /></div>
-            <div className="col-span-2"><label className={rotulo} style={corRotulo}>Palavras-chave</label><input disabled={camposBloqueados} className="stk-input stk-focus mt-1" value={f.palavrasChave} onChange={(e) => set("palavrasChave", e.target.value)} /></div>
+            <div className="sm:col-span-2"><label className={rotulo} style={corRotulo}>Descrição</label><textarea disabled={camposBloqueados} rows={2} className="stk-input stk-focus mt-1" value={f.descricao} onChange={(e) => set("descricao", e.target.value)} /></div>
+            <div className="sm:col-span-2"><label className={rotulo} style={corRotulo}>Palavras-chave</label><input disabled={camposBloqueados} className="stk-input stk-focus mt-1" value={f.palavrasChave} onChange={(e) => set("palavrasChave", e.target.value)} /></div>
             <div><label className={rotulo} style={corRotulo}>Limite de estoque baixo</label><input disabled={camposBloqueados} type="number" min={0} className="stk-input stk-focus mt-1 font-mono" value={f.limiteEstoqueBaixo} onChange={(e) => set("limiteEstoqueBaixo", Number(e.target.value))} /></div>
           </div>
           {!camposBloqueados && (
@@ -108,7 +108,7 @@ export default function ProdutoDetalhe({ produtoId, onVoltar, somenteLeitura, eh
           )}
         </div>
 
-        <div className="stk-card p-6">
+        <div className="stk-card p-4 md:p-6">
           <p className="font-display font-semibold text-sm mb-4">Etiqueta do produto</p>
           <div className="border-2 border-dashed rounded-xl p-4 text-center" style={{ borderColor: "var(--border)" }}>
             <p className="font-mono text-xs mb-3" style={{ color: "var(--text-500)" }}>{produto.codigoBarras}</p>

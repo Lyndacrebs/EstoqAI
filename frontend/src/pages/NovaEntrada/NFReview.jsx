@@ -27,20 +27,20 @@ export default function NFReview({ itens, setItens, nome, setNome, onConfirm, on
       <div className="flex flex-col gap-3 mt-5">
         {itens.map((it) => (
           <div key={it.id} className="p-4 rounded-lg border" style={{ borderColor: "var(--border)" }}>
-            <div className="grid grid-cols-12 gap-3 items-end">
-              <div className="col-span-5">
+            <div className="grid grid-cols-2 md:grid-cols-12 gap-3 items-end">
+              <div className="col-span-2 md:col-span-5">
                 <label className="text-xs font-medium" style={{ color: "var(--text-500)" }}>Item lido na NF</label>
                 <input className="stk-input stk-focus mt-1" value={it.descricaoOriginal} onChange={(e) => atualizar(it.id, "descricaoOriginal", e.target.value)} />
               </div>
-              <div className="col-span-2">
+              <div className="md:col-span-2">
                 <label className="text-xs font-medium" style={{ color: "var(--text-500)" }}>Qtd.</label>
                 <input type="number" className="stk-input stk-focus mt-1 font-mono" value={it.quantidade} onChange={(e) => atualizar(it.id, "quantidade", Number(e.target.value))} />
               </div>
-              <div className="col-span-2">
+              <div className="md:col-span-2">
                 <label className="text-xs font-medium" style={{ color: "var(--text-500)" }}>Unid.</label>
                 <input className="stk-input stk-focus mt-1" value={it.unidade} onChange={(e) => atualizar(it.id, "unidade", e.target.value)} />
               </div>
-              <div className="col-span-3">
+              <div className="col-span-2 md:col-span-3">
                 <label className="text-xs font-medium" style={{ color: "var(--text-500)" }}>Vínculo no estoque</label>
                 {it.produtoVinculado ? (
                   <div className="mt-1 text-xs font-medium px-2.5 py-2 rounded-md flex items-center gap-1.5" style={{ background: "var(--green-100)", color: "var(--green-600)" }}>

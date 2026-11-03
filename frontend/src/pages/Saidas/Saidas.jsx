@@ -47,7 +47,7 @@ export default function Saidas() {
       </FilterBar>
       <ErrorBox mensagem={error || erroAcao} onRetry={error ? reload : undefined} />
 
-      <div className="stk-card overflow-hidden">
+      <div className="stk-card stk-table-wrap">
         <table className="stk-table">
           <thead>
             <tr><th>ID</th><th>Data</th><th>Usuário responsável</th><th>Produtos</th><th className="right">Ações</th></tr>
@@ -57,11 +57,11 @@ export default function Saidas() {
               <tr><td colSpan={5}><Loading /></td></tr>
             ) : (saidas || []).map((s) => (
               <tr key={s.id}>
-                <td className="font-mono text-xs">{s.id}</td>
-                <td>{fmtDate(s.data)}</td>
-                <td>{s.usuarioResponsavel}</td>
-                <td style={{ color: "var(--text-500)" }}>{s.quantidadeProdutos} produto(s)</td>
-                <td className="right">
+                <td data-label="ID" className="font-mono text-xs">{s.id}</td>
+                <td data-label="Data">{fmtDate(s.data)}</td>
+                <td data-label="Usuário responsável">{s.usuarioResponsavel}</td>
+                <td data-label="Produtos" style={{ color: "var(--text-500)" }}>{s.quantidadeProdutos} produto(s)</td>
+                <td data-label="" className="right">
                   <div className="flex items-center justify-end gap-3">
                     <button onClick={() => setAbrir(s.id)} className="stk-link-btn stk-focus">Detalhes</button>
                     {ehAdmin && <button onClick={() => setExcluir(s)} className="stk-focus" style={{ color: "var(--red-500)" }} title="Excluir"><Trash2 size={14} /></button>}

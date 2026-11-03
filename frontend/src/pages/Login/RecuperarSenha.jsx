@@ -64,7 +64,7 @@ export default function RecuperarSenha({ emailInicial = "", onVoltar }) {
               <label className="text-xs font-medium" style={rotulo}>Nome completo</label>
               <input className="stk-input stk-focus mt-1" value={dados.nome} onChange={(e) => set("nome", e.target.value)} />
             </div>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label className="text-xs font-medium" style={rotulo}>Data de nascimento</label>
                 <input type="date" className="stk-input stk-focus mt-1" value={dados.dataNascimento} onChange={(e) => set("dataNascimento", e.target.value)} />
