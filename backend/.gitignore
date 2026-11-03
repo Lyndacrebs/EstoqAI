@@ -3,3 +3,5 @@ node_modules/
 *.db
 *.sqlite
 *.sqlite3
+# fotos das notas fiscais enviadas pelos usuários
+uploads/
